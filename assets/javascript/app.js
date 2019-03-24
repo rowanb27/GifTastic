@@ -47,8 +47,10 @@ var topics = ["German Shepherd", "Bulldog", "Poodle", "Chinese Crested Dog", "La
         // Creating and storing a div tag
         var dogDiv = $("<div>");
 
-        // Creating an element to have the rating displayed
-        var p = $("<p>").text("Rating: " + results[i].rating);
+        // Creating an element to have the rating and title displayed
+        // Adding class to each element
+        var rating = $("<p>").text("Rating: " + results[i].rating).addClass("rating");
+        var title = $("<p>").text("Title: " + results[i].title).addClass("title");
 
         // Creating and storing an image tag
         var dogImage = $("<img>");
@@ -56,9 +58,8 @@ var topics = ["German Shepherd", "Bulldog", "Poodle", "Chinese Crested Dog", "La
         //Setting the src attribute of the image to a property pulled off the result item
         dogImage.attr("src", results[i].images.original_still.url);
 
-        // Displaying the rating and image
-        dogDiv.append(p);
-        dogDiv.append(dogImage);
+        // Displaying the title, rating, and image
+        dogDiv.append(title, rating, dogImage);
 
         // Prepending the animalDiv to the HTML page in the "#dogs-view" div
          $("#dogs-view").prepend(dogDiv); 

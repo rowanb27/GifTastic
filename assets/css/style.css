@@ -1,0 +1,22 @@
+.title {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  border-bottom: 0px;
+  color: white;
+}
+
+.rating {
+   margin-top: 0px;
+   margin-bottom: 2px;
+   border-top: 0px;
+   color: white;
+}
+
+p {
+    border: 2px solid;
+    background-color: black;
+}
+
+body {
+    background-color: aquamarine;
+}
