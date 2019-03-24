@@ -27,6 +27,8 @@ var topics = ["German Shepherd", "Bulldog", "Poodle", "Chinese Crested Dog", "La
 
     //displayDogInfo function re-renders the HTML to display the appropriate content
     function displayDogInfo() {
+       
+
         var dog = $(this).attr("data-name");
         var APIKey = "eHLzkINryplaVpmyZIkKEFBpqmmyfctZ";
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + dog + "&api_key=" + APIKey + "&limit=10";
@@ -36,9 +38,11 @@ var topics = ["German Shepherd", "Bulldog", "Poodle", "Chinese Crested Dog", "La
           url: queryURL,
           method: "GET"
       }).then(function(response) {
-        
+        console.log(queryURL);
         // storing the data from the AJAX request in the results variable
           var results = response.data;
+
+        for (var i = 0; i < results.length; i++) {
 
         // Creating and storing a div tag
         var dogDiv = $("<div>");
@@ -50,19 +54,21 @@ var topics = ["German Shepherd", "Bulldog", "Poodle", "Chinese Crested Dog", "La
         var dogImage = $("<img>");
         
         //Setting the src attribute of the image to a property pulled off the result item
-        dogImage.attr("src", )
+        dogImage.attr("src", results[i].images.original_still.url);
 
-        // Displaying the rating
+        // Displaying the rating and image
         dogDiv.append(p);
+        dogDiv.append(dogImage);
 
-        // Storing the release year
-        var 
+        // Prepending the animalDiv to the HTML page in the "#dogs-view" div
+         $("#dogs-view").prepend(dogDiv); 
+        }
       });
-    }
+    };
 
 
     // Adding a click event listener to all elements with a class of "dog-btn"
-   // $(document).on("click", ".dog-btn", )
+    $(document).on("click", ".dog-btn", displayDogInfo);
      // Calling the renderButtons function to display the intial buttons
-    renderButtons()
+    renderButtons();
   
